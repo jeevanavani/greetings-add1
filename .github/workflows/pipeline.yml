@@ -50,7 +50,7 @@ jobs:
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:
-       name: greetings.jar
+       name: greetings-jar
        path: 
            build/libs
            test-script.sh
@@ -74,10 +74,25 @@ jobs:
    - name: Download candidate artifacts
      uses: actions/download-artifact@v3 
      with:
-      name: greetings.jar
+      name: greetings-jar
  
    - name: Execute test
      shell: bash
      run: | 
       chmod +x ./test-script.sh
       ./test-script.sh ${{ needs.build.outputs.artifact-path }} ${{ github.event.inputs.myValues }}
+      
+  count-args:
+ 
+    runs-on: ubuntu-latest
+ 
+    steps: 
+     - id: report-count
+       uses: <your github userid>/arg-count-action@main
+       with: 
+        arguments-to-count: ${{ github.event.inputs.myValues }}
+     - run: echo 
+     - shell: bash
+       run: |
+        echo argument count is ${{ steps.report-count.outputs.arg-count }} 
+  
