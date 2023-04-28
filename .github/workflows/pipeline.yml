@@ -74,7 +74,7 @@ jobs:
    - name: Download candidate artifacts
      uses: actions/download-artifact@v3 
      with:
-      name: greetings-jar
+      name: greetings.jar
  
    - name: Execute test
      shell: bash
@@ -88,7 +88,7 @@ jobs:
  
     steps: 
      - id: report-count
-       uses: <your github userid>/arg-count-action@main
+       uses: jeevanavani/arg-count-action@main
        with: 
         arguments-to-count: ${{ github.event.inputs.myValues }}
      - run: echo 
