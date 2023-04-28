@@ -52,7 +52,7 @@ jobs:
       with:
        name: greetings-jar
        path: build/libs
-             test-script.s
+             test-script.sh
        
     - name: Set output
       id: setoutput
